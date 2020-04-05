@@ -17,4 +17,4 @@ const PageTemplate = ({header, children}) => {
     </div>
 }
 
-export default PageTemplate;
+export default PageTemplate; 

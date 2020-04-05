@@ -10,7 +10,8 @@ module.exports = (function () {
         connect () { 
             mongoose.connect(mongoURI, {
                 useNewUrlParser: true,
-                useUnifiedTopology: true
+                useUnifiedTopology: true,
+                useFindAndModify: false
             }).then(
                 () => {
                     console.log('Successfully connected to mongodb')

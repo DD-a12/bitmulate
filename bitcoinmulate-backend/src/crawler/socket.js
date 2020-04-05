@@ -5,11 +5,14 @@ module.exports = (function() {
     let _messageHandler = (message) => {
         console.warn('messageHandler not defined');
     };
+    let _refreshHandler = () => {
+        console.warn('refreshHandler not defined');
+    };
 
     const handlers = {
-        open: () => {
-            console.log('connected to sercer');
-            // subscribe to ticker
+        open: async () => {
+            console.log('connected to server');
+            await _refreshHandler();
             _client.send(`{"command": "subscribe", "channel": "1002"}`);
         },
         message: (message) => {
@@ -32,6 +35,9 @@ module.exports = (function() {
     return {
         set handleMessage(messageHandler) {
             _messageHandler = messageHandler
+        },
+        set handleRefresh(refreshHandler) {
+            _refreshHandler = refreshHandler
         },
         connect,
         get getClient() {
